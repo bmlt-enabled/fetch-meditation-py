@@ -1,3 +1,6 @@
+
+__version__ = '0.1.0'
+
 from fetch_meditation.JFTLanguage import JFTLanguage
 from fetch_meditation.JFTSettings import JFTSettings
 from fetch_meditation.JFT import JFT

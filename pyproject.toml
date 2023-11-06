@@ -1,9 +1,11 @@
 [tool.poetry]
-name = "fetch_meditation"
+name = "fetch-meditation"
 version = "0.1.0"
 description = "Fetch Daily meditations"
 authors = ["BMLT Authors <help@bmlt.app>"]
 license = "MIT"
+readme = "README.md"
+packages = [{include = "fetch_meditation"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
