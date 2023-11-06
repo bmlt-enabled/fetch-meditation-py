@@ -2,7 +2,7 @@ from typing import Dict, List, Any
 from bs4 import BeautifulSoup
 from fetch_meditation.utilities.http_utility import HttpUtility
 from fetch_meditation.jft_entry import JftEntry
-22
+
 
 class GermanJft:
     def __init__(self, settings: Any) -> None:

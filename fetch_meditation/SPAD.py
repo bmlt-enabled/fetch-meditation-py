@@ -1,11 +1,12 @@
+from dataclasses import dataclass
 from typing import Dict, List, Any
 from fetch_meditation.spad_language import SpadLanguage
 from fetch_meditation.english_spad import EnglishSpad
 
 
+@dataclass
 class Spad:
-    def __init__(self, settings: Any) -> None:
-        self.settings = settings
+    settings: Any
 
     def fetch(self) -> None:
         pass

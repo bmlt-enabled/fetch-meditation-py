@@ -1,22 +1,22 @@
 import json
 from typing import Any, Dict, List
+from dataclasses import dataclass
 from bs4 import BeautifulSoup
 
 
+@dataclass
 class SpadEntry:
-    def __init__(self, date: str, title: str, page: str, quote: str, source: str,
-                 content: List[str], thought: str, copyright_: str) -> None:
-        self.date = date
-        self.title = title
-        self.page = page
-        self.quote = quote
-        self.source = source
-        self.content = content
-        self.thought = thought
-        self.copyright = copyright_
+    date: str
+    title: str
+    page: str
+    quote: str
+    source: str
+    content: List[str]
+    thought: str
+    copyright: str
 
-    def to_json(self) -> str:
-        return json.dumps({
+    def _to_dict(self) -> Dict[str, Any]:
+        return {
             'date': self.date,
             'title': self.title,
             'page': self.page,
@@ -25,7 +25,10 @@ class SpadEntry:
             'content': self.content,
             'thought': self.thought,
             'copyright': self.copyright
-        })
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self._to_dict())
 
     def without_tags(self) -> Dict[str, Any]:
         def strip_tags(item: str) -> str:
@@ -35,13 +38,4 @@ class SpadEntry:
                 soup = BeautifulSoup(item, 'html.parser')
                 return soup.text
 
-        return {key: strip_tags(value) for key, value in {
-            'date': self.date,
-            'title': self.title,
-            'page': self.page,
-            'quote': self.quote,
-            'source': self.source,
-            'content': self.content,
-            'thought': self.thought,
-            'copyright': self.copyright
-        }.items()}
+        return {key: strip_tags(value) for key, value in self._to_dict().items()}

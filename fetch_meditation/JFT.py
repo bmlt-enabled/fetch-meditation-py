@@ -1,4 +1,5 @@
-from typing import Dict, List, Any
+from dataclasses import dataclass
+from typing import Any, Union
 from fetch_meditation.jft_language import JftLanguage
 from fetch_meditation.english_jft import EnglishJft
 from fetch_meditation.german_jft import GermanJft
@@ -7,19 +8,16 @@ from fetch_meditation.portuguese_jft import PortugueseJft
 from fetch_meditation.russian_jft import RussianJft
 
 
+@dataclass
 class Jft:
-    def __init__(self, settings: Any) -> None:
-        self.settings = settings
-
-    def fetch(self) -> None:
-        pass
+    settings: Any
 
     @property
     def language(self) -> JftLanguage:
         return self.settings.language
 
     @staticmethod
-    def get_instance(settings: Any) -> 'Union[EnglishJft, GermanJft, JapaneseJft, PortugueseJft, RussianJft]':
+    def get_instance(settings: Any) -> Union[EnglishJft, GermanJft, JapaneseJft, PortugueseJft, RussianJft]:
         return {
             JftLanguage.English: EnglishJft,
             JftLanguage.German: GermanJft,

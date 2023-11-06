@@ -1,6 +1,7 @@
+from dataclasses import dataclass
 from fetch_meditation.spad_language import SpadLanguage
 
 
+@dataclass
 class SpadSettings:
-    def __init__(self, language: SpadLanguage):
-        self.language = language
+    language: SpadLanguage

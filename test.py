@@ -7,12 +7,12 @@ from fetch_meditation.spad_settings import SpadSettings
 from fetch_meditation.spad import Spad
 
 
-# settings = JFTSettings(JFTLanguage.English)
-# jft_instance = JFT.get_instance(settings)
-# jft_entry = jft_instance.fetch()
-# lang_name = jft_instance.get_language()
-# print(jft_entry.without_tags())
-
+settings = JftSettings(JftLanguage.English)
+jft_instance = Jft.get_instance(settings)
+jft_entry = jft_instance.fetch()
+lang_name = settings.language
+print(jft_entry.without_tags())
+print(lang_name)
 
 for language in JftLanguage:
     print(f"\n\n-=-=-=-=-=-=-=-= JFT - {language} -=-=-=-=-=-=-=-=\n\n")

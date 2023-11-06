@@ -1,6 +1,7 @@
+from dataclasses import dataclass
 from fetch_meditation.jft_language import JftLanguage
 
 
+@dataclass
 class JftSettings:
-    def __init__(self, language: JftLanguage):
-        self.language = language
+    language: JftLanguage
