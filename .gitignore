@@ -1,0 +1,11 @@
+.idea
+.DS_Store
+.project
+.settings/*
+.vscode/*
+logs/
+build/
+docs/
+*.zip
+__pycache__/
+venv/
