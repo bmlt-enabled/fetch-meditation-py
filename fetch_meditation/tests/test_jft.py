@@ -29,8 +29,8 @@ def test_jft_language_property(language_cls):
 
 
 def test_get_instance(language_cls):
-    jft_cls, jft_lang = language_cls
-    jft_settings = JftSettings(jft_lang)
+    jft_cls, language = language_cls
+    jft_settings = JftSettings(language)
     jft_instance = Jft.get_instance(jft_settings)
 
     assert isinstance(jft_instance, jft_cls)
