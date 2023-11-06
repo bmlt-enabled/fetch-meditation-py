@@ -38,22 +38,13 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Run tests
+        id: runp-tests
         run: |
           source .venv/bin/activate
-          poetry run pytest
+          make test
 
-      - name: Run PEP 8 checks
-        id: pep8-check
+      - name: Run Lint
+        id: run-lint
         run: |
           source .venv/bin/activate
-          pycodestyle --ignore=E501 ./fetch_meditation/
-
-      - name: Check PEP 8 results
-        id: pep8-result
-        run: |
-          if [ $? -eq 0 ]; then
-            echo "PEP 8 check passed."
-          else
-            echo "PEP 8 check failed."
-            exit 1
-          fi
+          make lint
