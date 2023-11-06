@@ -100,6 +100,14 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "pytz"
+version = "2023.3.post1"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "soupsieve"
 version = "2.5"
 description = "A modern CSS selector implementation for Beautiful Soup."
@@ -132,7 +140,7 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bba319754aae680d9b6737dfd2ab17b8afeb53ec484e30162c7e7b9e9c57e80d"
+content-hash = "65db58de1013e6530d4d9dd9844fa4bf10e9f8f8b3efa3cc84efd1edf055e154"
 
 [metadata.files]
 autopep8 = []
@@ -144,6 +152,7 @@ packaging = []
 pluggy = []
 pycodestyle = []
 pytest = []
+pytz = []
 soupsieve = []
 tomli = []
 urllib3 = []
