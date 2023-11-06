@@ -23,7 +23,7 @@ jobs:
 
       - name: Build
         id: poetry-build
-        run: poetry build
+        run: make build
 
       - name: Publish to PyPI
         id: pypi-publish
