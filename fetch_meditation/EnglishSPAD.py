@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from utilities.HttpUtility import HttpUtility
+from fetch_meditation.utilities.HttpUtility import HttpUtility
 from fetch_meditation.SPADEntry import SPADEntry
 
 
