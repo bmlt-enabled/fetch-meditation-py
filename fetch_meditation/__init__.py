@@ -1,5 +1,5 @@
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 from fetch_meditation.JFTLanguage import JFTLanguage
 from fetch_meditation.JFTSettings import JFTSettings
