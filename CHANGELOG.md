@@ -1,3 +1,6 @@
+## 0.1.3 (November 6, 2023)
+* Fix git casing issue.
+
 ## 0.1.2 (November 6, 2023)
 * Renamed files and convert casing.
 
