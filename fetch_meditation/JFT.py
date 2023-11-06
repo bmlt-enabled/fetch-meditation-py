@@ -1,27 +1,29 @@
-from fetch_meditation.JFTLanguage import JFTLanguage
-from fetch_meditation.EnglishJFT import EnglishJFT
-from fetch_meditation.GermanJFT import GermanJFT
-from fetch_meditation.JapaneseJFT import JapaneseJFT
-from fetch_meditation.PortugueseJFT import PortugueseJFT
-from fetch_meditation.RussianJFT import RussianJFT
+from typing import Dict, List, Any
+from fetch_meditation.jft_language import JftLanguage
+from fetch_meditation.english_jft import EnglishJft
+from fetch_meditation.german_jft import GermanJft
+from fetch_meditation.japanese_jft import JapaneseJft
+from fetch_meditation.portuguese_jft import PortugueseJft
+from fetch_meditation.russian_jft import RussianJft
 
 
-class JFT:
-    def __init__(self, settings):
+class Jft:
+    def __init__(self, settings: Any) -> None:
         self.settings = settings
 
-    def fetch(self):
+    def fetch(self) -> None:
         pass
 
-    def get_language(self):
-        pass
+    @property
+    def language(self) -> JftLanguage:
+        return self.settings.language
 
     @staticmethod
-    def get_instance(settings):
+    def get_instance(settings: Any) -> 'Union[EnglishJft, GermanJft, JapaneseJft, PortugueseJft, RussianJft]':
         return {
-            JFTLanguage.English: EnglishJFT,
-            JFTLanguage.German: GermanJFT,
-            JFTLanguage.Japanese: JapaneseJFT,
-            JFTLanguage.Portuguese: PortugueseJFT,
-            JFTLanguage.Russian: RussianJFT,
+            JftLanguage.English: EnglishJft,
+            JftLanguage.German: GermanJft,
+            JftLanguage.Japanese: JapaneseJft,
+            JftLanguage.Portuguese: PortugueseJft,
+            JftLanguage.Russian: RussianJft,
         }[settings.language](settings)

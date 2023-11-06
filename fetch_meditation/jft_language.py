@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class JFTLanguage(Enum):
+class JftLanguage(Enum):
     English = 1
     # French = 2
     German = 3

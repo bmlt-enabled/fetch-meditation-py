@@ -1,21 +1,19 @@
+from typing import Dict, List, Any
 from bs4 import BeautifulSoup
-from fetch_meditation.utilities.HttpUtility import HttpUtility
-from fetch_meditation.JFTEntry import JFTEntry
+from fetch_meditation.utilities.http_utility import HttpUtility
+from fetch_meditation.jft_entry import JftEntry
+22
 
-
-class GermanJFT:
-    def __init__(self, settings):
+class GermanJft:
+    def __init__(self, settings: Any) -> None:
         self.settings = settings
 
-    def get_language(self):
-        return self.settings.language
-
-    def fetch(self):
+    def fetch(self) -> 'JftEntry':
         url = 'https://narcotics-anonymous.de/artikel/nur-fuer-heute/'
         data = HttpUtility.http_get(url)
         soup = BeautifulSoup(data, 'html.parser')
         container = soup.find('div', {'id': 'jft-container'})
-        result = {}
+        result: Dict[str, Any] = {}
 
         for node in container.children:
             if node.name is not None:
@@ -32,7 +30,7 @@ class GermanJFT:
         result['copyright'] = ''
         result['jft-content'] = list(filter(None, result['jft-content']))
 
-        return JFTEntry(
+        return JftEntry(
             result['jft-date'],
             result['jft-title'],
             result['page'],

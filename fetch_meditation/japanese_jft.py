@@ -1,17 +1,15 @@
 from datetime import datetime
+from typing import Dict, List, Any
 from bs4 import BeautifulSoup
-from fetch_meditation.utilities.HttpUtility import HttpUtility
-from fetch_meditation.JFTEntry import JFTEntry
+from fetch_meditation.utilities.http_utility import HttpUtility
+from fetch_meditation.jft_entry import JftEntry
 
 
-class JapaneseJFT:
-    def __init__(self, settings):
+class JapaneseJft:
+    def __init__(self, settings: Any) -> None:
         self.settings = settings
 
-    def get_language(self):
-        return self.settings.language
-
-    def fetch(self):
+    def fetch(self) -> 'JftEntry':
         url = 'https://najapan.org/just_for_today/'
         data = HttpUtility.http_get(url)
         soup = BeautifulSoup(data, 'lxml')
@@ -68,7 +66,7 @@ class JapaneseJFT:
             paragraph_content = paragraph_content.next_element
         result['content'] = [i for i in filtered_content if i]
 
-        return JFTEntry(
+        return JftEntry(
             result['date'],
             result['title'],
             result['page'],

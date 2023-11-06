@@ -1,19 +1,21 @@
-from fetch_meditation.SPADLanguage import SPADLanguage
-from fetch_meditation.EnglishSPAD import EnglishSPAD
+from typing import Dict, List, Any
+from fetch_meditation.spad_language import SpadLanguage
+from fetch_meditation.english_spad import EnglishSpad
 
 
-class SPAD:
-    def __init__(self, settings):
+class Spad:
+    def __init__(self, settings: Any) -> None:
         self.settings = settings
 
-    def fetch(self):
+    def fetch(self) -> None:
         pass
 
-    def get_language(self):
-        pass
+    @property
+    def language(self) -> SpadLanguage:
+        return self.settings.language
 
     @staticmethod
-    def get_instance(settings):
+    def get_instance(settings: Any) -> EnglishSpad:
         return {
-            SPADLanguage.English: EnglishSPAD,
+            SpadLanguage.English: EnglishSpad,
         }[settings.language](settings)

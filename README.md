@@ -4,12 +4,12 @@
 
 ### Basic Usage
 ```py
-from fetch_meditation.JFTLanguage import JFTLanguage
-from fetch_meditation.JFTSettings import JFTSettings
-from fetch_meditation.JFT import JFT
+from fetch_meditation.jft_language import JftLanguage
+from fetch_meditation.jft_settings import JftSettings
+from fetch_meditation.jft import Jft
 
-settings = JFTSettings(JFTLanguage.Russian)
-jft_instance = JFT.get_instance(settings)
+settings = JftSettings(JftLanguage.Russian)
+jft_instance = Jft.get_instance(settings)
 jft_entry = jft_instance.fetch()
 
 print(jft_entry.quote)
