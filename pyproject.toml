@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fetch-meditation"
-version = "0.1.3"
+version = "0.1.4"
 description = "Fetch Daily meditations"
 authors = ["BMLT Authors <help@bmlt.app>"]
 license = "MIT"
@@ -11,6 +11,7 @@ packages = [{include = "fetch_meditation"}]
 python = "^3.9"
 beautifulsoup4 = "^4.12.2"
 urllib3 = "^2.0.7"
+pytz ="^2023.3"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^2.0.4"

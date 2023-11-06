@@ -1,3 +1,6 @@
+## 0.1.4 (November 6, 2023)
+* Added additional languages.
+
 ## 0.1.3 (November 6, 2023)
 * Fix git casing issue.
 
