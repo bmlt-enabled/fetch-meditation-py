@@ -3,9 +3,10 @@
 .project
 .settings/*
 .vscode/*
+*.zip
 logs/
 build/
 docs/
-*.zip
 __pycache__/
 venv/
+.pytest_cache/
