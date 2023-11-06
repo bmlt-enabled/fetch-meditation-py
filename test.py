@@ -11,6 +11,8 @@ settings = JftSettings(JftLanguage.English)
 jft_instance = Jft.get_instance(settings)
 jft_entry = jft_instance.fetch()
 lang_name = settings.language
+jft = Jft(settings)
+print(jft.language)
 print(jft_entry.without_tags())
 print(lang_name)
 
