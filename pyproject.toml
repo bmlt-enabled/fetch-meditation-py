@@ -10,6 +10,7 @@ packages = [{include = "fetch_meditation"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 beautifulsoup4 = "^4.12.2"
+lxml = "^4.9.3"
 urllib3 = "^2.0.7"
 pytz ="^2023.3"
 

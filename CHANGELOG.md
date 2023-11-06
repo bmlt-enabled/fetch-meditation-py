@@ -1,3 +1,6 @@
+## 0.1.5 (November 6, 2023)
+* Added lxml dependency for beautiful soup.
+
 ## 0.1.4 (November 6, 2023)
 * Added additional languages.
 
