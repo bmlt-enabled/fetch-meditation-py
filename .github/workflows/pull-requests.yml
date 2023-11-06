@@ -5,26 +5,53 @@ on:
     branches: [ 'main' ]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-22.04
     steps:
       - name: Check out code 🛒
         uses: actions/checkout@v4
         id: code-checkout
 
-      - uses: actions/setup-python@v4
+      - name: Set up python
+        id: setup-python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-          cache: 'pip'
+          python-version: '3.11'
 
-      - name: PIP Install
-        id: pip-install
-        run: pip install autopep8
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3.4
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+
+      - name: Install project
+        run: poetry install --no-interaction
+
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          poetry run pytest
 
       - name: Run PEP 8 checks
-        run: pycodestyle --ignore=E501 .
+        id: pep8-check
+        run: |
+          source .venv/bin/activate
+          pycodestyle --ignore=E501 ./fetch_meditation/
 
       - name: Check PEP 8 results
+        id: pep8-result
         run: |
           if [ $? -eq 0 ]; then
             echo "PEP 8 check passed."
