@@ -1,3 +1,7 @@
+## 0.1.6 (November 7, 2023)
+* Removed lxml dependency.
+* Update spanish parsing.
+
 ## 0.1.5 (November 6, 2023)
 * Added lxml dependency for beautiful soup.
 

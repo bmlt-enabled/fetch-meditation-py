@@ -1,4 +1,5 @@
 from typing import Dict, List, Any
+import re
 import pytz
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -23,7 +24,7 @@ class SpanishJft:
             comment = soup.find(string=f'PARRAFO {i}')
             if comment:
                 paragraph = comment.find_next('p').get_text(strip=True)
-                paragraphs.append(paragraph)
+                paragraphs.append(paragraph.replace("\n", ""))
 
         # Get Thought
         start_comment = soup.find(string='SOLO X HOY insertar AQUI sin el Solo por Hoy')
@@ -47,14 +48,14 @@ class SpanishJft:
                 result['quote'] = element.get_text(strip=True)
             elif class_name == ['numero-pagina-sxh']:
                 result['source'] = element.get_text()
-            elif class_name == ['soloxhoycontainer']:
-                result['thought'] = element.get_text()
+
+        thought_div = soup.find('div', attrs={'id': 'soloxhoycontainer'})
+        thought = thought_div.get_text(strip=True).replace("\n", "")
+        result['thought'] = re.sub(r'(Sólo por Hoy:)', r'<b>\1 </b> ', thought)
 
         result['content'] = paragraphs
         result['page'] = ''
-        result[
-            'copyright'] = 'Servicio del Foro Zonal Latinoamericano, Copyright 2017 NA World Services, Inc. Todos los Derechos Reservados.'
-        result['thought'] = 'Sólo por Hoy: ' + extracted_thought.strip()
+        result['copyright'] = 'Servicio del Foro Zonal Latinoamericano, Copyright 2017 NA World Services, Inc. Todos los Derechos Reservados.'
 
         return JftEntry(
             result['date'],
