@@ -12,7 +12,7 @@ class JapaneseJft:
     def fetch(self) -> 'JftEntry':
         url = 'https://najapan.org/just_for_today/'
         data = HttpUtility.http_get(url)
-        soup = BeautifulSoup(data, 'lxml')
+        soup = BeautifulSoup(data, 'html.parser')
         result = {
             'date': '',
             'quote': '',
@@ -34,7 +34,7 @@ class JapaneseJft:
         # Extract quote
         p0_element = soup.find('p')
         if p0_element:
-            result['quote'] = p0_element.text.strip()
+            result['quote'] = p0_element.next_element
 
         # Extract the source and page
         p1_element = soup.find_all('p')[1]
