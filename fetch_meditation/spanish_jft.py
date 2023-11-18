@@ -7,6 +7,14 @@ from fetch_meditation.utilities.http_utility import HttpUtility
 from fetch_meditation.jft_entry import JftEntry
 
 
+def remove_newlines_from_dict(input_dict):
+    for key, value in input_dict.items():
+        if isinstance(value, str):
+            input_dict[key] = value.replace('\n', '')
+        elif isinstance(value, dict):
+            remove_newlines_from_dict(value)
+
+
 class SpanishJft:
     def __init__(self, settings: Any) -> None:
         self.settings = settings
@@ -55,8 +63,9 @@ class SpanishJft:
 
         result['content'] = paragraphs
         result['page'] = ''
-        result['copyright'] = 'Servicio del Foro Zonal Latinoamericano, Copyright 2017 NA World Services, Inc. Todos los Derechos Reservados.'
-
+        result[
+            'copyright'] = 'Servicio del Foro Zonal Latinoamericano, Copyright 2017 NA World Services, Inc. Todos los Derechos Reservados.'
+        remove_newlines_from_dict(result)
         return JftEntry(
             result['date'],
             result['title'],
