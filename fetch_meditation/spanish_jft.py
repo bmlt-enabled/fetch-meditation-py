@@ -32,7 +32,8 @@ class SpanishJft:
             comment = soup.find(string=f'PARRAFO {i}')
             if comment:
                 paragraph = comment.find_next('p').get_text(strip=True)
-                paragraphs.append(paragraph.replace("\n", ""))
+                if not paragraph.startswith("Sólo por Hoy"):
+                    paragraphs.append(paragraph.replace("\n", ""))
 
         # Get Thought
         start_comment = soup.find(string='SOLO X HOY insertar AQUI sin el Solo por Hoy')
