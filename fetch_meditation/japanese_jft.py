@@ -34,7 +34,7 @@ class JapaneseJft:
         # Extract quote
         p0_element = soup.find('p')
         if p0_element:
-            result['quote'] = p0_element.next_element
+            result['quote'] = p0_element.next_element.get_text(strip=True).replace("\n", "")
 
         # Extract the source and page
         p1_element = soup.find_all('p')[1]

@@ -1,3 +1,6 @@
+## 0.1.7 (November 26, 2023)
+* Make sure thought doesn't end up in content array for spanish.
+
 ## 0.1.6 (November 7, 2023)
 * Removed lxml dependency.
 * Update spanish parsing.
