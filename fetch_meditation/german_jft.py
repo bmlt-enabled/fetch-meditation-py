@@ -21,14 +21,15 @@ class GermanJft:
                 if id == 'jft-content':
                     content_list = []
                     for contentNode in node.find_all('p'):
-                        content_list.append(contentNode.get_text(
-                            strip=True).replace('\n', ' '))
+                        if contentNode.get('id') != 'jft-content-1':
+                            content_list.append(contentNode.get_text(
+                                strip=True).replace('\n', ' '))
                     result[id] = content_list
                 else:
                     result[id] = node.get_text(strip=True).replace('\n', '')
         result['page'] = ''
         result['copyright'] = ''
-        result['jft-content'] = list(filter(None, result['jft-content']))
+        # result['jft-content'] = list(filter(None, result['jft-content']))
 
         return JftEntry(
             result['jft-date'],
