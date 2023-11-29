@@ -7,13 +7,13 @@ from fetch_meditation.spad_settings import SpadSettings
 from fetch_meditation.spad import Spad
 
 
-settings = JftSettings(JftLanguage.German)
-jft_instance = Jft.get_instance(settings)
-jft_entry = jft_instance.fetch()
-lang_name = settings.language
-jft = Jft(settings)
+# settings = JftSettings(JftLanguage.English)
+# jft_instance = Jft.get_instance(settings)
+# jft_entry = jft_instance.fetch()
+# lang_name = settings.language
+# jft = Jft(settings)
 # print(jft.language)
-print(jft_entry.to_json())
+# print(jft_entry.to_json())
 # print(lang_name)
 
 # for language in JftLanguage:
@@ -38,12 +38,12 @@ print(jft_entry.to_json())
 #     print(spad_entry.quote)
 #     print(f" -- {lang_name}")
 
-# for language in JftLanguage:
-#     if language is JftLanguage.French:
-#         # French server is really slow
-#         continue
-#     settings = JftSettings(language)
-#     jft_instance = Jft.get_instance(settings)
-#     jft_entry = jft_instance.fetch()
-#     lang_name = settings.language
-#     print(jft_entry.to_json())
+for language in JftLanguage:
+    if language is JftLanguage.French:
+        # French server is really slow
+        continue
+    settings = JftSettings(language)
+    jft_instance = Jft.get_instance(settings)
+    jft_entry = jft_instance.fetch()
+    lang_name = settings.language
+    print(jft_entry.to_json())

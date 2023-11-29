@@ -29,7 +29,7 @@ class GermanJft:
                     result[id] = node.get_text(strip=True).replace('\n', '')
         result['page'] = ''
         result['copyright'] = ''
-        # result['jft-content'] = list(filter(None, result['jft-content']))
+        result['jft-content'] = list(filter(None, result['jft-content']))
 
         return JftEntry(
             result['jft-date'],
