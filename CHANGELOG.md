@@ -1,3 +1,6 @@
+## 0.1.8 (November 29, 2023)
+* Fix for german content.
+
 ## 0.1.7 (November 26, 2023)
 * Make sure thought doesn't end up in content array for spanish.
 
