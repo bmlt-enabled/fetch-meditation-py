@@ -1,3 +1,6 @@
+## 0.1.9 (January 23, 2024)
+* Spanish language fix.
+
 ## 0.1.8 (November 29, 2023)
 * Fix for german content.
 

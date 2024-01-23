@@ -22,7 +22,7 @@ class SpanishJft:
     def fetch(self) -> 'JftEntry':
         timezone = pytz.timezone('America/Mexico_City')
         date = datetime.now(timezone)
-        url = 'https://forozonalatino.org/wp-content/uploads/meditaciones/' + date.strftime('%m/%d') + '.html'
+        url = 'https://fzla.org/wp-content/uploads/meditaciones/' + date.strftime('%m/%d') + '.html'
         data = HttpUtility.http_get(url)
         soup = BeautifulSoup(data, 'html.parser')
 
