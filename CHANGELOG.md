@@ -1,3 +1,6 @@
+## 0.2.0 (February 2, 2024)
+* Fix for better handling of non ansi characters.
+
 ## 0.1.9 (January 23, 2024)
 * Spanish language fix.
 
