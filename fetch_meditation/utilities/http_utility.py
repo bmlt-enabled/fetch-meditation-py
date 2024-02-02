@@ -16,9 +16,29 @@ class HttpUtility:
         try:
             response = http.request('GET', url, headers=headers)
             if response.status in [200, 302, 304]:
-                return response.data.decode('utf-8')
+                try:
+                    # First try decoding with utf-8
+                    return response.data.decode('utf-8')
+                except UnicodeDecodeError:
+                    # If utf-8 fails, look for charset in Content-Type header
+                    content_type = response.headers.get('Content-Type', '')
+                    charset = HttpUtility.find_charset(content_type)
+                    if charset:
+                        try:
+                            return response.data.decode(charset)
+                        except UnicodeDecodeError:
+                            pass
+                    # Decode with utf-8 using 'replace' and replace undecodable bytes with a space
+                    return response.data.decode('utf-8', errors='replace').replace('\ufffd', ' ')
             else:
-                raise Exception(
-                    'Received non-acceptable status code: ' + str(response.status))
+                raise Exception('Received non-acceptable status code: ' + str(response.status))
         except HTTPError as e:
             raise Exception('HTTP error occurred: ' + str(e))
+
+    @staticmethod
+    def find_charset(content_type):
+        """Extract charset from Content-Type header if present."""
+        if 'charset=' in content_type:
+            charset = content_type.split('charset=')[-1].split(';')[0].strip()
+            return charset
+        return ''
