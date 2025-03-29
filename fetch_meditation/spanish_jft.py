@@ -33,9 +33,7 @@ class SpanishJft:
             for p in content_div.find_all('p', class_=lambda x: x != 'separa-sxh'):
                 text = p.get_text(strip=True)
                 # Skip "Sólo por hoy" paragraphs, empty paragraphs, and paragraphs with images
-                if (not re.match(r'^Sólo por hoy', text, re.I) and
-                    text and
-                        not p.find('img')):
+                if (not re.match(r'^Sólo por hoy', text, re.I) and text and not p.find('img')):
                     paragraphs.append(text.replace("\n", ""))
 
         # Get Thought
