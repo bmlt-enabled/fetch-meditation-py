@@ -28,32 +28,37 @@ class FrenchJft:
         # Extract the title
         title_element = soup.find('div', class_='cartouche').find('h1')
         if title_element:
-            result['title'] = title_element.get_text().strip()
+            result['title'] = title_element.text.strip()
 
         # Extract the date
         date_element = soup.find('p', class_='info-publi')
         if date_element:
-            result['date'] = date_element.get_text().strip()
+            result['date'] = date_element.text.strip()
 
         # Extract the quote and source
         quote_div = soup.find('div', class_='chapo')
         if quote_div:
-            quote_p_tags = quote_div.find_all('p')
-            if len(quote_p_tags) >= 2:
-                result['quote'] = quote_p_tags[0].get_text().strip()
-                result['source'] = quote_p_tags[1].get_text().strip()
+            quote_text = quote_div.text.strip()
+            # Split the text into quote and source
+            parts = quote_text.split('Texte de base')
+            if len(parts) >= 2:
+                result['quote'] = parts[0].strip()
+                result['source'] = 'Texte de base' + parts[1].strip()
 
         # Extract the thought
-        thought_element = soup.find('h3', class_='h3 spip')
+        thought_element = soup.find('h2', class_='spip')
         if thought_element:
-            result['thought'] = thought_element.get_text().strip()
+            result['thought'] = thought_element.text.strip()
 
         # Extract the content
         text_div = soup.find('div', class_='texte')
         if text_div:
             p_tags = text_div.find_all('p')
             for p_tag in p_tags:
-                result['content'].append(p_tag.get_text().strip())
+                # Skip if it's the thought (already captured)
+                if p_tag.text.strip() == result['thought']:
+                    continue
+                result['content'].append(p_tag.text.strip())
 
         return JftEntry(
             result['date'],

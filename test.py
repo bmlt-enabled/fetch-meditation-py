@@ -39,9 +39,6 @@ from fetch_meditation.spad import Spad
 #     print(f" -- {lang_name}")
 
 for language in JftLanguage:
-    if language is JftLanguage.French:
-        # French server is really slow
-        continue
     settings = JftSettings(language)
     jft_instance = Jft.get_instance(settings)
     jft_entry = jft_instance.fetch()

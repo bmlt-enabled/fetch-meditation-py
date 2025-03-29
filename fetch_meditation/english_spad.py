@@ -2,6 +2,7 @@ from typing import Dict, List, Any
 from bs4 import BeautifulSoup
 from fetch_meditation.utilities.http_utility import HttpUtility
 from fetch_meditation.spad_entry import SpadEntry
+from datetime import datetime
 
 
 class EnglishSpad:
@@ -9,8 +10,16 @@ class EnglishSpad:
         self.settings = settings
 
     def fetch(self) -> 'SpadEntry':
-        url = 'https://www.spadna.org/'
-        data = HttpUtility.http_get(url)
+        # Try primary URL first
+        try:
+            data = HttpUtility.http_get('https://www.spadna.org/')
+        except Exception as e:
+            # If primary URL fails, try fallback URL
+            try:
+                data = HttpUtility.http_get('https://na.org/spadna/')
+            except Exception as fallback_exception:
+                raise Exception(f"Error fetching data from both na.org/spadna and spadna.org. "
+                                f"Primary error: {str(e)}")
         soup = BeautifulSoup(data, 'html.parser')
         td_elements = soup.find_all('td')
         spad_keys = ['date', 'title', 'page', 'quote', 'source',
@@ -25,7 +34,12 @@ class EnglishSpad:
             else:
                 result[spad_keys[i]] = td.text.strip()
 
-        result["copyright"] = ' '.join(result["copyright"].split())
+        # Handle copyright with fallback
+        if 'copyright' not in result:
+            result['copyright'] = f"Copyright (c) 2007-{datetime.now().year}, NA World Services, Inc. All Rights Reserved"
+        else:
+            # Clean up existing copyright text
+            result['copyright'] = ' '.join(result['copyright'].split())
 
         return SpadEntry(
             result['date'],

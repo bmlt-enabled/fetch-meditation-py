@@ -2,6 +2,7 @@ from typing import Dict, List, Any
 from bs4 import BeautifulSoup
 from fetch_meditation.utilities.http_utility import HttpUtility
 from fetch_meditation.jft_entry import JftEntry
+from datetime import datetime
 
 
 class EnglishJft:
@@ -9,8 +10,17 @@ class EnglishJft:
         self.settings = settings
 
     def fetch(self) -> 'JftEntry':
-        url = 'https://www.jftna.org/jft/'
-        data = HttpUtility.http_get(url)
+        # Try primary URL first
+        try:
+            data = HttpUtility.http_get('https://www.jftna.org/jft/')
+        except Exception as e:
+            # If primary URL fails, try fallback URL
+            try:
+                data = HttpUtility.http_get('https://na.org/jftna/')
+            except Exception as fallback_exception:
+                raise Exception(f"Error fetching data from both na.org/jftna and jftna.org/jft. "
+                                f"Primary error: {str(e)}")
+
         soup = BeautifulSoup(data, 'html.parser')
         td_elements = soup.find_all('td')
         jft_keys = ['date', 'title', 'page', 'quote',
@@ -25,7 +35,12 @@ class EnglishJft:
             else:
                 result[jft_keys[i]] = td.text.strip()
 
-        result["copyright"] = ' '.join(result["copyright"].split())
+        # Handle copyright with fallback
+        if 'copyright' not in result:
+            result['copyright'] = f"Copyright (c) 2007-{datetime.now().year}, NA World Services, Inc. All Rights Reserved"
+        else:
+            # Clean up existing copyright text
+            result['copyright'] = ' '.join(result['copyright'].split())
 
         return JftEntry(
             result['date'],
