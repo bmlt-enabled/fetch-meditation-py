@@ -11,7 +11,7 @@ lint:  ## Py Lint
 
 .PHONY: fmt
 fmt:  ## Py Fmt
-	autopep8 --exclude='*/venv/*' --in-place --recursive ./fetch_meditation/
+	poetry run black ./fetch_meditation/
 
 .PHONY: test
 test:  ## Py Test

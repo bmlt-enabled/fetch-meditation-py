@@ -6,14 +6,14 @@ from fetch_meditation.jft_entry import JftEntry
 @pytest.fixture
 def sample_entry():
     return JftEntry(
-        '2023-10-26',
-        'Sample Title',
-        'Sample Page',
-        'Sample Quote',
-        'Sample Source',
-        ['Content Line 1', 'Content Line 2'],
-        'Sample Thought',
-        'Sample Copyright'
+        "2023-10-26",
+        "Sample Title",
+        "Sample Page",
+        "Sample Quote",
+        "Sample Source",
+        ["Content Line 1", "Content Line 2"],
+        "Sample Thought",
+        "Sample Copyright",
     )
 
 
@@ -32,10 +32,10 @@ def test_jft_entry_properties(sample_entry):
 
 def test_jft_entry_without_tags(sample_entry):
     entry = sample_entry
-    entry.title = 'Sample <br>Title'
+    entry.title = "Sample <br>Title"
 
     result = entry.without_tags()
-    assert result['title'] == 'Sample Title'
+    assert result["title"] == "Sample Title"
 
 
 def test_jft_entry_to_json(sample_entry):
@@ -44,11 +44,11 @@ def test_jft_entry_to_json(sample_entry):
     decoded_response = json.loads(response_data)
 
     assert decoded_response is not None
-    assert 'date' in decoded_response
-    assert 'title' in decoded_response
-    assert 'page' in decoded_response
-    assert 'quote' in decoded_response
-    assert 'source' in decoded_response
-    assert 'content' in decoded_response
-    assert 'thought' in decoded_response
-    assert 'copyright' in decoded_response
+    assert "date" in decoded_response
+    assert "title" in decoded_response
+    assert "page" in decoded_response
+    assert "quote" in decoded_response
+    assert "source" in decoded_response
+    assert "content" in decoded_response
+    assert "thought" in decoded_response
+    assert "copyright" in decoded_response

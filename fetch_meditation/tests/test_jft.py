@@ -13,17 +13,19 @@ from fetch_meditation.swedish_jft import SwedishJft
 from fetch_meditation.jft import Jft
 
 
-@pytest.fixture(params=[
-    (EnglishJft, JftLanguage.English),
-    (FrenchJft, JftLanguage.French),
-    (GermanJft, JftLanguage.German),
-    (ItalianJft, JftLanguage.Italian),
-    (PortugueseJft, JftLanguage.Portuguese),
-    (JapaneseJft, JftLanguage.Japanese),
-    (RussianJft, JftLanguage.Russian),
-    (SpanishJft, JftLanguage.Spanish),
-    (SwedishJft, JftLanguage.Swedish),
-])
+@pytest.fixture(
+    params=[
+        (EnglishJft, JftLanguage.English),
+        (FrenchJft, JftLanguage.French),
+        (GermanJft, JftLanguage.German),
+        (ItalianJft, JftLanguage.Italian),
+        (PortugueseJft, JftLanguage.Portuguese),
+        (JapaneseJft, JftLanguage.Japanese),
+        (RussianJft, JftLanguage.Russian),
+        (SpanishJft, JftLanguage.Spanish),
+        (SwedishJft, JftLanguage.Swedish),
+    ]
+)
 def language_cls(request):
     return request.param
 

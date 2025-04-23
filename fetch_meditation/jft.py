@@ -21,7 +21,19 @@ class Jft:
         return self.settings.language
 
     @staticmethod
-    def get_instance(settings: Any) -> Union[EnglishJft, FrenchJft, GermanJft, ItalianJft, JapaneseJft, PortugueseJft, RussianJft, SpanishJft, SwedishJft]:
+    def get_instance(
+        settings: Any,
+    ) -> Union[
+        EnglishJft,
+        FrenchJft,
+        GermanJft,
+        ItalianJft,
+        JapaneseJft,
+        PortugueseJft,
+        RussianJft,
+        SpanishJft,
+        SwedishJft,
+    ]:
         return {
             JftLanguage.English: EnglishJft,
             JftLanguage.French: FrenchJft,

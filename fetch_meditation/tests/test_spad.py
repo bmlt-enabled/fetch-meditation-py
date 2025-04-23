@@ -5,9 +5,11 @@ from fetch_meditation.english_spad import EnglishSpad
 from fetch_meditation.spad import Spad
 
 
-@pytest.fixture(params=[
-    (EnglishSpad, SpadLanguage.English),
-])
+@pytest.fixture(
+    params=[
+        (EnglishSpad, SpadLanguage.English),
+    ]
+)
 def language_cls(request):
     return request.param
 
