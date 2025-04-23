@@ -16,3 +16,12 @@ fmt:  ## Py Fmt
 .PHONY: test
 test:  ## Py Test
 	poetry run pytest
+
+.PHONY: docs
+docs:  ## Generate documentation
+	cd docs && poetry run make html
+
+.PHONY: docs-serve
+docs-serve:  ## Serve documentation locally
+	@echo "Serving documentation at http://127.0.0.1:8000/_build/html/"
+	@cd docs && poetry run python -m http.server

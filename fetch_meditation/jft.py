@@ -1,3 +1,9 @@
+"""
+JFT (Just For Today) meditation fetcher module.
+
+This module provides functionality to fetch Just For Today meditations in different languages.
+"""
+
 from dataclasses import dataclass
 from typing import Any, Union
 from fetch_meditation.jft_language import JftLanguage
@@ -14,10 +20,26 @@ from fetch_meditation.swedish_jft import SwedishJft
 
 @dataclass
 class Jft:
+    """
+    Main JFT meditation fetcher class.
+
+    This class serves as a factory for creating language-specific JFT meditation fetchers
+    based on the provided settings.
+
+    Attributes:
+        settings: Configuration settings for the JFT fetcher
+    """
+
     settings: Any
 
     @property
     def language(self) -> JftLanguage:
+        """
+        Get the language setting for this JFT fetcher.
+
+        Returns:
+            JftLanguage: The language enum value
+        """
         return self.settings.language
 
     @staticmethod
@@ -34,6 +56,15 @@ class Jft:
         SpanishJft,
         SwedishJft,
     ]:
+        """
+        Factory method to create a language-specific JFT fetcher.
+
+        Args:
+            settings: Configuration settings for the JFT fetcher
+
+        Returns:
+            A language-specific JFT fetcher instance
+        """
         return {
             JftLanguage.English: EnglishJft,
             JftLanguage.French: FrenchJft,

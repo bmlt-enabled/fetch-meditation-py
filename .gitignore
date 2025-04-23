@@ -6,9 +6,11 @@
 *.zip
 logs/
 build/
-docs/
 __pycache__/
 venv/
 .pytest_cache/
 dist/
 .cursor/
+_build/
+ __pycache__
+ dist/
