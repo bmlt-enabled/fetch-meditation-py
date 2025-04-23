@@ -17,14 +17,14 @@ class JftEntry:
 
     def _to_dict(self) -> Dict[str, Any]:
         return {
-            'date': self.date,
-            'title': self.title,
-            'page': self.page,
-            'quote': self.quote,
-            'source': self.source,
-            'content': self.content,
-            'thought': self.thought,
-            'copyright': self.copyright
+            "date": self.date,
+            "title": self.title,
+            "page": self.page,
+            "quote": self.quote,
+            "source": self.source,
+            "content": self.content,
+            "thought": self.thought,
+            "copyright": self.copyright,
         }
 
     def to_json(self) -> str:
@@ -35,7 +35,7 @@ class JftEntry:
             if isinstance(item, list):
                 return [strip_tags(sub_item) for sub_item in item]
             else:
-                soup = BeautifulSoup(item, 'html.parser')
+                soup = BeautifulSoup(item, "html.parser")
                 return soup.text
 
         return {key: strip_tags(value) for key, value in self._to_dict().items()}

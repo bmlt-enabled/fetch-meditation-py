@@ -19,4 +19,6 @@ class Spad:
     def get_instance(settings: Any) -> EnglishSpad:
         return {
             SpadLanguage.English: EnglishSpad,
-        }[settings.language](settings)
+        }[
+            settings.language
+        ](settings)
