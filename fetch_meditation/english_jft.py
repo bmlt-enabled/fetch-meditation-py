@@ -1,4 +1,4 @@
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from bs4 import BeautifulSoup
 from fetch_meditation.utilities.http_utility import HttpUtility
 from fetch_meditation.jft_entry import JftEntry
@@ -10,13 +10,18 @@ class EnglishJft:
         self.settings = settings
 
     def fetch(self) -> 'JftEntry':
+        # Prepare params if time_zone is set
+        params = None
+        if hasattr(self.settings, 'time_zone') and self.settings.time_zone:
+            params = {'timeZone': self.settings.time_zone}
+
         # Try primary URL first
         try:
-            data = HttpUtility.http_get('https://www.jftna.org/jft/')
+            data = HttpUtility.http_get('https://jft.na.org/', params)
         except Exception as e:
             # If primary URL fails, try fallback URL
             try:
-                data = HttpUtility.http_get('https://na.org/jftna/')
+                data = HttpUtility.http_get('https://na.org/jftna/', params)
             except Exception as fallback_exception:
                 raise Exception(f"Error fetching data from both na.org/jftna and jftna.org/jft. "
                                 f"Primary error: {str(e)}")

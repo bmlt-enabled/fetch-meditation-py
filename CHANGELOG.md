@@ -1,3 +1,6 @@
+## 0.3.0 (April 22, 2025)
+* Changed JFT/SPAD URLS, add time_zone parameter.
+
 ## 0.2.0 (February 2, 2024)
 * Fix for better handling of non ascii characters.
 

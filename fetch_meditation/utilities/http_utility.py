@@ -1,5 +1,7 @@
 import urllib3
 from urllib3.exceptions import HTTPError
+from typing import Dict, Optional, Any
+import urllib.parse
 
 
 class HttpUtility:
@@ -7,11 +9,16 @@ class HttpUtility:
         pass
 
     @staticmethod
-    def http_get(url):
+    def http_get(url: str, params: Optional[Dict[str, Any]] = None):
         http = urllib3.PoolManager()
         headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:105.0) Gecko/20100101 Firefox/105.0'
         }
+
+        # Properly append query parameters to the URL for GET requests
+        if params:
+            query_string = urllib.parse.urlencode(params)
+            url = f"{url}{'&' if '?' in url else '?'}{query_string}"
 
         try:
             response = http.request('GET', url, headers=headers)
