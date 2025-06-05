@@ -8,4 +8,4 @@ jft = EnglishJft(settings)
 entry = jft.fetch()
 
 # Print the date, which should reflect the Sydney timezone
-print(f"Date from JFT with Sydney timezone: {entry.date}") 
+print(f"Date from JFT with Sydney timezone: {entry.date}")
