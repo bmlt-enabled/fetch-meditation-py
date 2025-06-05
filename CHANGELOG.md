@@ -1,3 +1,6 @@
+## 0.4.0 (June 04, 2025)
+* Fixed Russian and Portuguese.
+
 ## 0.3.0 (April 22, 2025)
 * Changed JFT/SPAD URLS, add time_zone parameter.
 

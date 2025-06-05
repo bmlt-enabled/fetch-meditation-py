@@ -16,7 +16,7 @@ Available modules:
 - spad_entry: Data structure for SPAD meditation entries
 """
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 from fetch_meditation.jft_language import JftLanguage
 from fetch_meditation.jft_settings import JftSettings
