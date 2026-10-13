@@ -9,10 +9,12 @@ from typing import Any, Union
 from fetch_meditation.jft_language import JftLanguage
 from fetch_meditation.english_jft import EnglishJft
 from fetch_meditation.french_jft import FrenchJft
+from fetch_meditation.french_ca_jft import FrenchCaJft
 from fetch_meditation.german_jft import GermanJft
 from fetch_meditation.italian_jft import ItalianJft
 from fetch_meditation.japanese_jft import JapaneseJft
 from fetch_meditation.portuguese_jft import PortugueseJft
+from fetch_meditation.portuguese_pt_jft import PortuguesePtJft
 from fetch_meditation.russian_jft import RussianJft
 from fetch_meditation.spanish_jft import SpanishJft
 from fetch_meditation.swedish_jft import SwedishJft
@@ -48,10 +50,12 @@ class Jft:
     ) -> Union[
         EnglishJft,
         FrenchJft,
+        FrenchCaJft,
         GermanJft,
         ItalianJft,
         JapaneseJft,
         PortugueseJft,
+        PortuguesePtJft,
         RussianJft,
         SpanishJft,
         SwedishJft,
@@ -68,10 +72,12 @@ class Jft:
         return {
             JftLanguage.English: EnglishJft,
             JftLanguage.French: FrenchJft,
+            JftLanguage.FrenchCA: FrenchCaJft,
             JftLanguage.German: GermanJft,
             JftLanguage.Italian: ItalianJft,
             JftLanguage.Japanese: JapaneseJft,
             JftLanguage.Portuguese: PortugueseJft,
+            JftLanguage.PortuguesePT: PortuguesePtJft,
             JftLanguage.Russian: RussianJft,
             JftLanguage.Spanish: SpanishJft,
             JftLanguage.Swedish: SwedishJft,

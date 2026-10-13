@@ -23,3 +23,5 @@ class JftLanguage(Enum):
     Russian = 7
     Spanish = 8
     Swedish = 9
+    FrenchCA = 10
+    PortuguesePT = 11

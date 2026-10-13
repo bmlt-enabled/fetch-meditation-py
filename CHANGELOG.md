@@ -1,3 +1,7 @@
+## 0.5.0 (October 12, 2026)
+* Add French (Canada / Québec) JFT variant, sourced from naquebec.org.
+* Add Portuguese (Portugal) JFT variant, sourced from na-pt.org.
+
 ## 0.4.0 (June 04, 2025)
 * Fixed Russian and Portuguese.
 
