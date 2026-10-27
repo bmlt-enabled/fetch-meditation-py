@@ -1,3 +1,6 @@
+## 0.6.0 (October 27, 2026)
+* Add Danish JFT, sourced from nadanmark.dk.
+
 ## 0.5.0 (October 12, 2026)
 * Add French (Canada / Québec) JFT variant, sourced from naquebec.org.
 * Add Portuguese (Portugal) JFT variant, sourced from na-pt.org.

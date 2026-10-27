@@ -25,3 +25,4 @@ class JftLanguage(Enum):
     Swedish = 9
     FrenchCA = 10
     PortuguesePT = 11
+    Danish = 12

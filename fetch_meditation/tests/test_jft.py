@@ -4,6 +4,7 @@ from fetch_meditation.jft_settings import JftSettings
 from fetch_meditation.english_jft import EnglishJft
 from fetch_meditation.french_jft import FrenchJft
 from fetch_meditation.french_ca_jft import FrenchCaJft
+from fetch_meditation.danish_jft import DanishJft
 from fetch_meditation.german_jft import GermanJft
 from fetch_meditation.italian_jft import ItalianJft
 from fetch_meditation.portuguese_jft import PortugueseJft
@@ -20,6 +21,7 @@ from fetch_meditation.jft import Jft
         (EnglishJft, JftLanguage.English),
         (FrenchJft, JftLanguage.French),
         (FrenchCaJft, JftLanguage.FrenchCA),
+        (DanishJft, JftLanguage.Danish),
         (GermanJft, JftLanguage.German),
         (ItalianJft, JftLanguage.Italian),
         (PortugueseJft, JftLanguage.Portuguese),

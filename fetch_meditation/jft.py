@@ -10,6 +10,7 @@ from fetch_meditation.jft_language import JftLanguage
 from fetch_meditation.english_jft import EnglishJft
 from fetch_meditation.french_jft import FrenchJft
 from fetch_meditation.french_ca_jft import FrenchCaJft
+from fetch_meditation.danish_jft import DanishJft
 from fetch_meditation.german_jft import GermanJft
 from fetch_meditation.italian_jft import ItalianJft
 from fetch_meditation.japanese_jft import JapaneseJft
@@ -51,6 +52,7 @@ class Jft:
         EnglishJft,
         FrenchJft,
         FrenchCaJft,
+        DanishJft,
         GermanJft,
         ItalianJft,
         JapaneseJft,
@@ -73,6 +75,7 @@ class Jft:
             JftLanguage.English: EnglishJft,
             JftLanguage.French: FrenchJft,
             JftLanguage.FrenchCA: FrenchCaJft,
+            JftLanguage.Danish: DanishJft,
             JftLanguage.German: GermanJft,
             JftLanguage.Italian: ItalianJft,
             JftLanguage.Japanese: JapaneseJft,
